@@ -33,31 +33,46 @@ These are configuration values:
 
 -> Compile them using go build.
 
-2. Function: find_all_game_paths(source)
+2. Function:
+   ~~~
+    find_all_game_paths(source)
+   ~~~
 
-Purpose: Scans the given source directory for subdirectories with names containing “game”.
+-> Purpose: Scans the given source directory for subdirectories with names containing “game”.
 
-Returns: A list of absolute paths of these "game" directories.
+-> Returns: A list of absolute paths of these "game" directories.
 
 ✅ Note: The break ensures only top-level directories are scanned (non-recursive).
 
-3. Function: get_name_from_paths(paths, to_strip)
-Purpose: Cleans up directory names by removing _game from each.
+3. Function:
+   ~~~
+    get_name_from_paths(paths, to_strip)
+   ~~~
+-> Purpose: Cleans up directory names by removing _game from each.
 
-E.g., 'space_game' → 'space'.
+-> E.g., 'space_game' → 'space'.
 
-Returns: List of cleaned names.
+-> Returns: List of cleaned names.
 
-4. Function: create_dir(path)
-Purpose: Creates the target directory if it doesn’t already exist.
+4. Function:
+~~~
+ create_dir(path)
+~~~
+-> Purpose: Creates the target directory if it doesn’t already exist.
 
-5. Function: copy_and_overwrite(source, dest)
-Purpose: Copies the game directory to a new location.
+5. Function:
+   ~~~
+    copy_and_overwrite(source, dest)
+   ~~~
+-> Purpose: Copies the game directory to a new location.
 
-If the destination already exists, it’s deleted and replaced.
+-> If the destination already exists, it’s deleted and replaced.
 
-6. Function: make_json_metadata_file(path, game_dirs)
-Purpose: Generates a metadata.json file in the target directory.
+6. Function:
+~~~
+   make_json_metadata_file(path, game_dirs)
+~~~
+-> Purpose: Generates a metadata.json file in the target directory.
 
 Contents:
 ~~~
@@ -69,38 +84,47 @@ Edit
     "numberOfGames": 3
 }
 ~~~
-7. Function: run_command(command, path)
-Purpose: Runs a shell command (like go build) inside a given directory.
+7. Function:
+   ~~~
+   run_command(command, path)
+   ~~~
+-> Purpose: Runs a shell command (like go build) inside a given directory.
 
-Captures and prints the output (stdout/stderr).
+-> Captures and prints the output (stdout/stderr).
 
-8. Function: compile_game_code(path)
-Purpose: Locates the first .go file in a game directory.
+8. Function:
+   ~~~
+   compile_game_code(path)
+   ~~~
+-> Purpose: Locates the first .go file in a game directory.
 
-Then compiles it using go build <filename>.
+-> Then compiles it using go build <filename>.
 
-Only searches the top-level files, not recursively.
+-> Only searches the top-level files, not recursively.
 
-9. Function: main(source, target)
+9. Function:
+~~~
+ main(source, target)
+~~~
 This is the core execution logic:
 
-1.Gets full paths of source and target.
+   1.Gets full paths of source and target.
 
-2.Finds all game directories in the source.
+   2.Finds all game directories in the source.
 
-3.Cleans up the names.
+   3.Cleans up the names.
 
-4.Creates the target directory.
+   4.Creates the target directory.
 
-5.For each game:
+   5.For each game:
 
-->Copies it to the new location.
+     ->Copies it to the new location.
 
-->Compiles its .go file.
+   ->Compiles its .go file.
 
-Writes metadata JSON in the target folder.
+   6.Writes metadata JSON in the target folder.
 
-10. ~~~
+11. ~~~
     if __name__ == "__main__"
     ~~~
     Block
