@@ -5,33 +5,36 @@
 ✅ Overview: What This Code Does
 This Python script automates the process of:
 
-Finding all game project directories in a given source directory.
+1.Finding all game project directories in a given source directory.
 
-Copying each game directory to a new target location (with cleaned names).
+2.Copying each game directory to a new target location (with cleaned names).
 
-Compiling Go (.go) source code inside each copied game directory.
+3.Compiling Go (.go) source code inside each copied game directory.
 
-Generating a metadata JSON file summarizing all processed games.
+4.Generating a metadata JSON file summarizing all processed games.
 
 This is useful for managing multiple Go-based game projects—for example, organizing and building them in preparation for deployment, testing, or packaging.
 
 🧱 Key Components and Their Responsibilities
 1. Constants
+~~~
 python
 Copy
 Edit
 GAME_DIR_PATTERN = "game"
 GAME_CODE_EXTENSION = ".go"
 GAME_COMPILE_COMMAND = ["go", "build"]
+~~~
 These are configuration values:
 
-Search for directories containing “game” in their names.
+-> Search for directories containing “game” in their names.
 
-Look for Go source files (.go).
+-> Look for Go source files (.go).
 
-Compile them using go build.
+-> Compile them using go build.
 
 2. Function: find_all_game_paths(source)
+
 Purpose: Scans the given source directory for subdirectories with names containing “game”.
 
 Returns: A list of absolute paths of these "game" directories.
@@ -57,7 +60,7 @@ If the destination already exists, it’s deleted and replaced.
 Purpose: Generates a metadata.json file in the target directory.
 
 Contents:
-
+~~~
 json
 Copy
 Edit
@@ -65,6 +68,7 @@ Edit
     "gameNames": ["space", "puzzle", "maze"],
     "numberOfGames": 3
 }
+~~~
 7. Function: run_command(command, path)
 Purpose: Runs a shell command (like go build) inside a given directory.
 
@@ -80,28 +84,33 @@ Only searches the top-level files, not recursively.
 9. Function: main(source, target)
 This is the core execution logic:
 
-Gets full paths of source and target.
+1.Gets full paths of source and target.
 
-Finds all game directories in the source.
+2.Finds all game directories in the source.
 
-Cleans up the names.
+3.Cleans up the names.
 
-Creates the target directory.
+4.Creates the target directory.
 
-For each game:
+5.For each game:
 
-Copies it to the new location.
+->Copies it to the new location.
 
-Compiles its .go file.
+->Compiles its .go file.
 
 Writes metadata JSON in the target folder.
 
-10. if __name__ == "__main__" Block
-Purpose: Ensures the script runs only when called from the command line.
+10. ~~~
+    if __name__ == "__main__"
+    ~~~
+    Block
+-> Purpose: Ensures the script runs only when called from the command line.
 
-Requires: Two command-line arguments — source and target directories.
+-> Requires: Two command-line arguments — source and target directories.
 
 To run this code use:
+~~~
 python get_game_data.py data target
+~~~
 
 
