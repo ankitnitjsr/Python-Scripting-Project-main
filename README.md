@@ -2,7 +2,8 @@
 
 "This project is a build automation tool I created in Python to handle multiple Go-based game projects. It scans a source directory for all subdirectories with ‘game’ in their name, copies them to a target location, compiles the Go source files using go build, and generates a metadata.json to summarize all processed games. It also handles cleanup and renaming of directories to remove _game suffixes. I implemented modular functions for readability and maintainability—each with a single responsibility—and used the subprocess module to safely run build commands. This would be particularly useful in CI/CD pipelines or local automation setups where multiple game projects need to be built and packaged consistently."
 
-✅ Overview: What This Code Does
+✅ Overview: What This Code Does:-
+
 This Python script automates the process of:
 
 1.Finding all game project directories in a given source directory.
@@ -116,7 +117,7 @@ This is the core execution logic:
 
    5.For each game:
 
-     ->Copies it to the new location.
+   ->Copies it to the new location.
 
    ->Compiles its .go file.
 
