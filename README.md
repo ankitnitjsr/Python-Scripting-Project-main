@@ -77,8 +77,6 @@ These are configuration values:
 Contents:
 ~~~
 json
-Copy
-Edit
 {
     "gameNames": ["space", "puzzle", "maze"],
     "numberOfGames": 3
@@ -127,7 +125,6 @@ This is the core execution logic:
 11. ~~~
     if __name__ == "__main__"
     ~~~
-    Block
 -> Purpose: Ensures the script runs only when called from the command line.
 
 -> Requires: Two command-line arguments — source and target directories.
